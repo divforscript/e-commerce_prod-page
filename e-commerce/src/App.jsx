@@ -1,4 +1,4 @@
-import Nav from './components/nav/Nav'
+import Header from "./components/header/Header"
 
 
 function App() {
@@ -6,14 +6,14 @@ function App() {
   return (
     
     <div id="page-wrapper"
-    className="bg-amber-200 
+    className="bg-slate-400 relative
     min-w-[320px]
     min-h-[900px]">
       
-      <Nav />
+      <Header />
 
       <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, perferendis. Praesentium a minus consectetur expedita ducimus. Quia natus nam asperiores aliquid repellendus adipisci illum temporibus rem velit. Architecto, tenetur nihil?
+        INICIO INICIOINICIOINICIOINICIO INICIO INICIO INICIOLorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, perferendis. Praesentium a minus consectetur expedita ducimus. Quia natus nam asperiores aliquid repellendus adipisci illum temporibus rem velit. Architecto, tenetur nihil?
 
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, perferendis. Praesentium a minus consectetur expedita ducimus. Quia natus nam asperiores aliquid repellendus adipisci illum temporibus rem velit. Architecto, tenetur nihil?
 
@@ -36,6 +36,9 @@ function App() {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, perferendis. Praesentium a minus consectetur expedita ducimus. Quia natus nam asperiores aliquid repellendus adipisci illum temporibus rem velit. Architecto, tenetur nihil?
 
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, perferendis. Praesentium a minus consectetur expedita ducimus. Quia natus nam asperiores aliquid repellendus adipisci illum temporibus rem velit. Architecto, tenetur nihil?
+
+
+        FIN FIN FIN FIN FIN FINFIN FIN FINFIN FIN FINFIN FIN FIN FIN FIN FIN
       </div>
 
     </div>

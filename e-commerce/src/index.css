@@ -14,3 +14,7 @@
 :root {
   color-scheme: light dark;
 }
+
+body {
+  font-family: 'Kumbh Sans', sans-serif;
+}
