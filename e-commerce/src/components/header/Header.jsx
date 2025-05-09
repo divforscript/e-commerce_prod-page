@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import iconMenu from "../../../../asset-template/images/icon-menu.svg"
-import logo from "../../../../asset-template/images/logo.svg"
+import sneakersLogo from "../../../../asset-template/images/logo.svg"
 import iconCart from "../../../../asset-template/images/icon-cart.svg"
 import imageAvatar from "../../../../asset-template/images/image-avatar.png"
 
@@ -17,14 +17,18 @@ export default function Header() {
   let [isNavMobColOpen,setIsNavMobColOpen] = useState(false)
 
   let [handleBackInset,setHandleBackInset] = useState("hidden")
-  let [handleNavCol,setHandleNavCol] = useState("")
+  
   let [navColPosition,setNavColPosition] = useState("left-[-250px]")
   
   
+  function showNavMobileColumn() {
+    setHandleBackInset("");
+    setNavColPosition("left-[0px]")
+  }
 
   function closeNavMobileColumn() {
-    setHandleBackInset("hidden")
-    setHandleNavCol("hidden");
+    setHandleBackInset("hidden");
+    setNavColPosition("left-[-250px]");
   }
 
   
@@ -41,8 +45,9 @@ export default function Header() {
       className={`bg-black opacity-75 h-screen absolute inset-0 z-20 ${handleBackInset}`}>
       </div>
       
-      <nav id="nav-mobileColumn" className={`bg-white text-black overflow-auto ${handleNavCol}
-      absolute top-0 ${navColPosition} z-30
+      <nav id="nav-mobileColumn" 
+      className={`nav-mobileColumn bg-white text-black overflow-auto absolute top-0 z-30
+      transition-[left] duration-700 ${navColPosition}
       w-[250px]
       h-screen`}>
         
@@ -80,11 +85,12 @@ export default function Header() {
       </nav>
 
 
-      <img className="" src={iconMenu} alt="#" />
+      <img id="iconMenu" src={iconMenu} alt="#"
+      onClick={showNavMobileColumn}/>
 
 
-      <img src={logo} alt="e-commerce-Logo" 
-      className="absolute left-[52px] z-0" />
+      <img src={sneakersLogo} alt="e-commerce-Logo" 
+      className="absolute left-[56px] z-0" />
 
 
       <svg className="absolute right-[68px]" xmlns="http://www.w3.org/2000/svg" width="22" height="20">
