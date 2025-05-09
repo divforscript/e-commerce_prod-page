@@ -8,21 +8,20 @@ import imageAvatar from "../../../../asset-template/images/image-avatar.png"
 export default function Nav() {
   return (
 
-    <nav className="bg-white sticky
-    w-full h-25
+    <nav className="bg-white p-5 sticky top-0
+    w-full h-[70px]
+    flex items-center
     ">
-      <img src={iconMenu} alt="#" />
-      <img src={logo} alt="" />
-
-      <img src={iconCart} alt="" />
-      <img src={imageAvatar} alt="" />
-
-
       
+      <img className="" src={iconMenu} alt="#" />
+      <img className="absolute left-[52px]" src={logo} alt="" />
+
+      <img className="absolute right-[68px]" src={iconCart} alt="" />
+      <img className="w-7 h-7 absolute right-5" src={imageAvatar} alt="" />
 
     </nav>
 
     
-// 
+
   );
 }
