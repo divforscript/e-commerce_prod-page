@@ -24,42 +24,60 @@ export default function Header() {
     flex items-center
     ">
 
-      <div id="background-inset" className="bg-black opacity-75 h-screen absolute  inset-0 z-20">
+      <div id="background-inset" className="bg-black opacity-75 h-screen absolute inset-0 z-20">
       </div>
       
-      <nav id="nav-bar" className="bg-white text-black
-      absolute top-0 left-0 z-20
+      <nav id="nav-mobileColumn" className="bg-white text-black overflow-auto
+      absolute top-0 left-0 z-30
       w-[250px]
+      h-screen
       ">
         
-        <div id="nav-closeIcon-div" className="bg-red-400 p-5
-        w-full h-[75px] 
-        flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
-            <path d={iconClosePath} fill="#69707D" fill-rule="evenodd"/>
-          </svg>
+        <div id="nav-closeIcon-div" 
+        className="p-5 flex items-center
+        w-full h-[75px]">
+
+          <div className="bg-slate-300 size-7 flex justify-center items-center rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
+              <path d={iconClosePath} fill="#69707D" fill-rule="evenodd"/>
+            </svg>
+          </div>
+          
         </div>
         
 
-        <ul id="nav-links-div" 
-        className="bg-emerald-300 px-5 font-bold text-[#1d2025]
-        h-screen">
-          <li className="nav-items"><a href="#">Collections</a></li>
-          <li className="nav-items"><a href="#">Men</a></li>
-          <li className="nav-items"><a href="#">Women</a></li>
-          <li className="nav-items"><a href="#">About</a></li>
-          <li className="nav-items"><a href="#">Contact</a></li>
-        </ul>
+        <div className="overflow-auto pb-5
+        w-full
+        h-[calc(100%-75px)]">
+          <ul id="nav-links-div" 
+          className="px-5 font-bold text-[#1d2025]">
+            <li className="nav-items"><a href="#">Collections</a></li>
+            <li className="nav-items"><a href="#">Men</a></li>
+            <li className="nav-items"><a href="#">Women</a></li>
+            <li className="nav-items"><a href="#">About</a></li>
+            <li className="nav-items"><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        
 
       </nav>
 
+
       <img className="" src={iconMenu} alt="#" />
 
-      <img className="absolute left-[52px] z-0" src={logo} alt="" />
 
-      <svg className="absolute right-[68px]" xmlns="http://www.w3.org/2000/svg" width="22" height="20"><path d={iconCartPath} fill="#69707D" fill-rule="nonzero"/></svg>
+      <img src={logo} alt="e-commerce-Logo" 
+      className="absolute left-[52px] z-0" />
 
-      <img className="w-7 h-7 absolute right-5" src={imageAvatar} alt="" />
+
+      <svg className="absolute right-[68px]" xmlns="http://www.w3.org/2000/svg" width="22" height="20">
+        <path d={iconCartPath} fill="#69707D" fill-rule="nonzero"/>
+      </svg>
+
+
+      <img src={imageAvatar} alt="user-avatar" 
+      className="w-7 h-7 absolute right-5" />
 
     </header>
 
@@ -73,4 +91,12 @@ export default function Header() {
 
 
 
-
+{/* <ul id="nav-links-div" 
+        className="bg-emerald-300 px-5 font-bold text-[#1d2025] sticky top-10
+        h-min-[435px] h-[100%]">
+          <li className="nav-items"><a href="#">Collections</a></li>
+          <li className="nav-items"><a href="#">Men</a></li>
+          <li className="nav-items"><a href="#">Women</a></li>
+          <li className="nav-items"><a href="#">About</a></li>
+          <li className="nav-items"><a href="#">Contact</a></li>
+        </ul> */}
