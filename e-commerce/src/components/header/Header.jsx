@@ -1,3 +1,4 @@
+import { useState } from "react"
 
 import iconMenu from "../../../../asset-template/images/icon-menu.svg"
 import logo from "../../../../asset-template/images/logo.svg"
@@ -13,6 +14,18 @@ export default function Header() {
 
   const iconClosePath = "m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
 
+  let [isNavMobColOpen,setIsNavMobColOpen] = useState(false)
+
+  let [handleBackInset,setHandleBackInset] = useState("hidden")
+  let [handleNavCol,setHandleNavCol] = useState("")
+  let [navColPosition,setNavColPosition] = useState("left-[-250px]")
+  
+  
+
+  function closeNavMobileColumn() {
+    setHandleBackInset("hidden")
+    setHandleNavCol("hidden");
+  }
 
   
   return (
@@ -24,20 +37,23 @@ export default function Header() {
     flex items-center
     ">
 
-      <div id="background-inset" className="bg-black opacity-75 h-screen absolute inset-0 z-20">
+      <div id="background-inset" 
+      className={`bg-black opacity-75 h-screen absolute inset-0 z-20 ${handleBackInset}`}>
       </div>
       
-      <nav id="nav-mobileColumn" className="bg-white text-black overflow-auto
-      absolute top-0 left-0 z-30
+      <nav id="nav-mobileColumn" className={`bg-white text-black overflow-auto ${handleNavCol}
+      absolute top-0 ${navColPosition} z-30
       w-[250px]
-      h-screen
-      ">
+      h-screen`}>
         
         <div id="nav-closeIcon-div" 
         className="p-5 flex items-center
         w-full h-[75px]">
 
-          <div className="bg-slate-300 size-7 flex justify-center items-center rounded-full">
+          <div className="bg-slate-300 size-7 flex justify-center items-center rounded-full
+          hover:cursor-pointer"
+          onClick={closeNavMobileColumn}>
+
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
               <path d={iconClosePath} fill="#69707D" fill-rule="evenodd"/>
             </svg>
