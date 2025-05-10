@@ -1,5 +1,53 @@
-.nav-items {
+
+.nav-itemsBar {
+  color: hsl(219, 9%, 45%);
+  font-size: clamp(16px,2.1vw,23px);
+  padding-top: 0px;
+}
+
+.nav-itemsCol {
   font-size: 20px;
   padding-top: 24px;
 }
 
+@media only screen and (768px < width) {
+  
+  #background-inset {
+    display: none;
+  }
+
+  #nav-mobileBar {
+
+    left: 180px;
+    
+    width: 55vw;
+    max-width: 640px;
+  }
+
+
+  #nav-mobileColumn {
+    left: -250px;
+  }
+  
+  
+  #icon-menu {
+    transition: left 0ms 0ms;
+    left: -40px;
+    
+  }
+
+  #sneakers-logo {
+    left: 20px;
+    transition: left 500ms;
+  }
+
+  #icon-cart {
+    right: 100px;
+  }
+
+  #image-avatar {
+    scale: 1.7;
+  }
+
+
+}
