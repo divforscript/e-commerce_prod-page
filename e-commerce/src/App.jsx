@@ -8,7 +8,7 @@ function App() {
     <div id="page-wrapper"
     className="bg-slate-400 relative
     min-w-[320px]
-    min-h-[900px]">
+    min-h-[900p]x">
       
       <Header />
 
