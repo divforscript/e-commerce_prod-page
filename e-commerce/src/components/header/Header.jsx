@@ -125,7 +125,7 @@ export default function Header() {
 
 
       <svg id="icon-cart" xmlns="http://www.w3.org/2000/svg" width="22" height="20"
-      className="absolute right-[68px] transition-[right] duration-300">
+      className="absolute right-[68px] transition-[right] duration-300 hover:cursor-pointer">
         <path d={iconCartPath} fill="#69707D" fill-rule="nonzero"/>
       </svg>
 

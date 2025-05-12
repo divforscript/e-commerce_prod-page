@@ -49,5 +49,11 @@
     scale: 1.7;
   }
 
+  #image-avatar:hover {
+    cursor: pointer;
+    border-radius: 100%;
+    outline: 1px solid hsl(26, 100%, 55%);
+  }
+
 
 }
