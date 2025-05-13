@@ -49,7 +49,7 @@ export default function Header() {
   const [ulineColors, setUlineColors] = useState(["transparent","transparent","transparent","transparent","transparent"])
 
   function underline(idx) {
-    setUlineColors(ulineColors.map((color,ind)=>(ind===idx)? "[#ff7d1a]" : "transparent"))
+    setUlineColors(ulineColors.map((color,ind) => (ind===idx)? "[#ff7d1a]" : "transparent"))
   }
 
     
@@ -134,11 +134,11 @@ export default function Header() {
           className="px-5 font-bold text-[#1d2025] 
           flex items-center gap-[6%]
           h-full">
-            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[0]}`}><a onClick={() => underline(0)} href="#">Collections</a></li>
-            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[1]}`}><a onClick={() => underline(1)} href="#">Men</a></li>
-            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[2]}`}><a onClick={() => underline(2)} href="#">Women</a></li>
-            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[3]}`}><a onClick={() => underline(3)} href="#">About</a></li>
-            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[4]}`}><a onClick={() => underline(4)} href="#">Contact</a></li>
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[0]}`}><a onClick={() => underline(0)} href="#">Collections</a></li>
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[1]}`}><a onClick={() => underline(1)} href="#">Men</a></li>
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[2]}`}><a onClick={() => underline(2)} href="#">Women</a></li>
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[3]}`}><a onClick={() => underline(3)} href="#">About</a></li>
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[4]}`}><a onClick={() => underline(4)} href="#">Contact</a></li>
           </ul>
         </nav>
 
