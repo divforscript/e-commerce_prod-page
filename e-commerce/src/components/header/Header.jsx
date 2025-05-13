@@ -44,10 +44,134 @@ export default function Header() {
     closeNavMobileColumn();
   }
 
-  
+
+
+  const [ulineColors, setUlineColors] = useState(["transparent","transparent","transparent","transparent","transparent"])
+
+  function underline(idx) {
+    setUlineColors(ulineColors.map((color,ind)=>(ind===idx)? "[#ff7d1a]" : "transparent"))
+  }
+
+    
   return (
 
-    <header className="bg-white p-5 z-2
+    <header id="header" className="bg-white p-5 z-2
+    sticky top-0
+    w-full h-[70px]
+    flex items-center
+    ">
+
+      <div id="background-inset" 
+      className={`bg-black opacity-75 h-screen absolute inset-0 z-20 ${handleBackInset}`}
+      onClick={closeNavMobileColumn}>
+      </div>      
+
+      <nav id="nav-mobileColumn" 
+      className={`bg-white text-black overflow-auto absolute top-0 z-30
+      transition-[left] duration-300 ${navColPosition}
+      w-[68%] max-w-[250px]
+      h-screen`}>
+        
+        <div id="nav-closeIcon-div" 
+        className="p-5 flex items-center
+        w-full h-[75px]">
+
+          <button className="bg-slate-300 size-7 flex justify-center items-center rounded-full
+          hover:cursor-pointer"
+          onClick={closeNavMobileColumn}>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
+              <path d={iconClosePath} fill="#69707D" fill-rule="evenodd"/>
+            </svg>
+          </button>
+          
+        </div>
+        
+
+        <div id="nav-links2" 
+        className="overflow-auto pb-5
+        w-full h-[calc(100%-75px)]">
+
+          <ul id="nav-links-ul2" 
+          className="px-5 font-bold text-[#1d2025]">
+            <li className="nav-itemsCol"><a href="#">Collections</a></li>
+            <li className="nav-itemsCol"><a href="#">Men</a></li>
+            <li className="nav-itemsCol"><a href="#">Women</a></li>
+            <li className="nav-itemsCol"><a href="#">About</a></li>
+            <li className="nav-itemsCol"><a href="#">Contact</a></li>
+          </ul>
+
+        </div>
+
+      </nav>
+
+
+    
+      <button id="icon-menu" onClick={showNavMobileColumn}
+      className="relative left-0 transition-[left] duration-300 delay-0 
+      w-5 h-5
+      ">
+        <img src={iconMenu} alt="#"/>
+      </button>
+
+      
+      <div id="desktop-header" className="w-full">
+        
+
+        <div id="sneakers-div" className="h-full flex items-center">
+          <img id="sneakers-logo" src={sneakersLogo} alt="e-commerce-Logo" 
+          className=" z-0 h-5 relative left-5
+          transition-[left] duration-300" />
+        </div>
+        
+
+
+        <nav id="nav-mobileBar"
+        className="absolute left-[-500px] top-5 h-full
+        transition-[left] duration-300 
+        ">
+          <ul id="nav-links-ul1" 
+          className="px-5 font-bold text-[#1d2025] 
+          flex items-center gap-[6%]
+          h-full">
+            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[0]}`}><a onClick={() => underline(0)} href="#">Collections</a></li>
+            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[1]}`}><a onClick={() => underline(1)} href="#">Men</a></li>
+            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[2]}`}><a onClick={() => underline(2)} href="#">Women</a></li>
+            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[3]}`}><a onClick={() => underline(3)} href="#">About</a></li>
+            <li className={`nav-itemsBar border-b-4 ${"border-b-"+ulineColors[4]}`}><a onClick={() => underline(4)} href="#">Contact</a></li>
+          </ul>
+        </nav>
+
+        
+
+        <button id="icon-cart-div" className="w-[24px] h-7 flex items-center absolute top-5 right-16 transition-[right] duration-300">
+          <svg id="icon-cart" xmlns="http://www.w3.org/2000/svg" width="22" height="20"
+          className="">
+            <path d={iconCartPath} fill="#69707D" fill-rule="nonzero"/>
+          </svg>
+        </button>
+        
+
+        <button id="image-avatar" 
+        className="h-7 w-7 absolute top-5 right-5">
+          <img  src={imageAvatar} alt="user-avatar"/>
+        </button>
+
+        
+
+      </div>
+
+      
+
+    </header>
+
+    
+  );
+}
+
+
+
+{/* <header className="bg-white p-5 z-2
     sticky top-0
     w-full h-[75px]
     flex items-center
@@ -56,23 +180,7 @@ export default function Header() {
       <div id="background-inset" 
       className={`bg-black opacity-75 h-screen absolute inset-0 z-20 ${handleBackInset}`}
       onClick={closeNavMobileColumn}>
-      </div>
-
-      <nav id="nav-mobileBar"
-      className="absolute left-[-425px] 
-      transition-[left] duration-300
-      ">
-        <ul id="nav-links-ul1" 
-        className="px-5 font-bold text-[#1d2025] flex justify-between items-center
-        h-[75px] ">
-          <li className="nav-itemsBar"><a href="#">Collections</a></li>
-          <li className="nav-itemsBar"><a href="#">Men</a></li>
-          <li className="nav-itemsBar"><a href="#">Women</a></li>
-          <li className="nav-itemsBar"><a href="#">About</a></li>
-          <li className="nav-itemsBar"><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-      
+      </div>      
 
       <nav id="nav-mobileColumn" 
       className={`bg-white text-black overflow-auto absolute top-0 z-30
@@ -115,13 +223,28 @@ export default function Header() {
 
 
       <img id="icon-menu" src={iconMenu} alt="#"
-      className="relative left-0 transition-[left] delay-150"
+      className="relative left-0 transition-[left] delay-150 hover:cursor-pointer"
       onClick={showNavMobileColumn}/>
 
 
       <img id="sneakers-logo" src={sneakersLogo} alt="e-commerce-Logo" 
       className="absolute z-0
       transition-[left] duration-300 left-[56px]" />
+
+      <nav id="nav-mobileBar"
+      className="absolute left-[-425px] bg-red-800
+      transition-[left] duration-300
+      ">
+        <ul id="nav-links-ul1" 
+        className="px-5 font-bold text-[#1d2025] flex justify-between items-center
+        h-[75px] ">
+          <li className="nav-itemsBar"><a href="#">Collections</a></li>
+          <li className="nav-itemsBar"><a href="#">Men</a></li>
+          <li className="nav-itemsBar"><a href="#">Women</a></li>
+          <li className="nav-itemsBar"><a href="#">About</a></li>
+          <li className="nav-itemsBar"><a href="#">Contact</a></li>
+        </ul>
+      </nav>
 
 
       <svg id="icon-cart" xmlns="http://www.w3.org/2000/svg" width="22" height="20"
@@ -131,14 +254,8 @@ export default function Header() {
 
 
       <img id="image-avatar" src={imageAvatar} alt="user-avatar" 
-      className="w-7 h-7 absolute right-5
+      className="w-7 h-7 absolute right-5 hover:cursor-pointer
       transition-[scale] duration-300" />
 
-    </header>
-
-    
-  );
-}
-
-
+    </header> */}
 

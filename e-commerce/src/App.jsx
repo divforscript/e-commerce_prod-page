@@ -7,13 +7,14 @@ function App() {
     
     <div id="page-wrapper"
     className="bg-slate-400 relative
-    min-w-[320px]
+    min-w-[300px]
     min-h-[900p]x">
       
       <Header />
 
       <div>
-        INICIO INICIOINICIOINICIOINICIO INICIO INICIO INICIOLorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, perferendis. Praesentium a minus consectetur expedita ducimus. Quia natus nam asperiores aliquid repellendus adipisci illum temporibus rem velit. Architecto, tenetur nihil?
+        INICIO INICIOINICIOINICIOINICIO INI
+        CIO INICIO INICIOLorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, perferendis. Praesentium a minus consectetur expedita ducimus. Quia natus nam asperiores aliquid repellendus adipisci illum temporibus rem velit. Architecto, tenetur nihil?
 
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, perferendis. Praesentium a minus consectetur expedita ducimus. Quia natus nam asperiores aliquid repellendus adipisci illum temporibus rem velit. Architecto, tenetur nihil?
 
