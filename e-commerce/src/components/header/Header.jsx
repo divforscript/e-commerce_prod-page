@@ -47,13 +47,9 @@ export default function Header() {
 
   const navBarLinks = [
     { id: "collections", name: "Collections" },
-    
     { id: "men", name: "Men" },
-
     { id: "women", name: "Women" },
-
     { id: "about", name: "About" },
-
     { id: "contact", name: "Contact" },
   ]
 

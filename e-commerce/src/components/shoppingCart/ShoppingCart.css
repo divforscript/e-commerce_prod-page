@@ -1,0 +1,19 @@
+
+#cart-box {
+  box-shadow: 
+    -0.5em 0.6em 1vw  rgba(0, 0, 0, 0.400),
+    8px 0.6em 1vw rgba(0, 0, 0, 0.400);
+
+  right: clamp(8px,calc(15vw - 80px),60px);
+}
+
+
+#cart-title {
+  display: flex;
+  align-items: center;
+
+}
+
+#cart-items-box {
+  height: 100%;
+}
