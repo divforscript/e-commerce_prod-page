@@ -45,17 +45,28 @@ export default function Header() {
     closeNavMobileColumn();
   };
 
+  const navBarLinks = [
+    { id: "collections", name: "Collections" },
+    
+    { id: "men", name: "Men" },
+
+    { id: "women", name: "Women" },
+
+    { id: "about", name: "About" },
+
+    { id: "contact", name: "Contact" },
+  ]
+
+  const [b_sel,setBsel] = useState("border-b-[#ff7d1a]")
+  const [b_usel,setUsel] = useState("border-b-[#ffffff]")
+
   const [ulineColors, setUlineColors] = useState([
-    "[#ff7d1a]",
-    "[#ffffff]",
-    "[#ffffff]",
-    "[#ffffff]",
-    "[#ffffff]",
+    b_sel,b_usel,b_usel,b_usel,b_usel,
   ]);
 
   function underline(idx) {
     setUlineColors(
-      ulineColors.map((color, ind) => (ind === idx ? "[#ff7d1a]" : "[#ffffff]"))
+      ulineColors.map((color, ind) => ind === idx ? b_sel : b_usel)
     );
   }
 
@@ -96,7 +107,7 @@ export default function Header() {
             id="nav-links-ul2"
             className="px-5 font-bold text-[#1d2025]"
           >
-            <li className="nav-itemsCol">
+            {/* <li className="nav-itemsCol">
               <a href="#">Collections</a>
             </li>
             <li className="nav-itemsCol">
@@ -110,7 +121,18 @@ export default function Header() {
             </li>
             <li className="nav-itemsCol">
               <a href="#">Contact</a>
-            </li>
+            </li> */}
+
+            {navBarLinks.map((link,idx) => {
+              return(
+                <li key={link.name+"navCol"}
+                  className="nav-itemsCol"
+                >
+                  <a href="#">{link.name}</a>
+                </li>
+              );
+            })}
+            
           </ul>
         </div>
       </nav>
@@ -141,7 +163,7 @@ export default function Header() {
             id="nav-links-ul1"
             className="px-5 font-bold text-[#1d2025] flex items-center gap-[6%] h-full"
           >
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[0]}`}><a onClick={() => underline(0)} href="#">Collections</a></li>
+            {/* <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[0]}`}><a onClick={() => underline(0)} href="#">Collections</a></li>
 
             <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[1]}`}> <a onClick={() => underline(1)} href="#">Men</a></li>
 
@@ -149,7 +171,30 @@ export default function Header() {
 
             <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[3]}`}><a onClick={() => underline(3)} href="#">About</a></li>
 
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[4]}`}> <a onClick={() => underline(4)} href="#">Contact</a></li>
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[4]}`}> <a onClick={() => underline(4)} href="#">Contact</a></li> */}
+
+            
+
+            {navBarLinks.map((link,idx) => {
+              
+              return(
+                <li 
+                  key={link.id}
+                  className={`nav-itemsBar border-b-4 ${ulineColors[idx]}`}
+                > 
+                  <a onClick={() => underline(idx)} href="#"
+                  > 
+                    {link.name}
+                  </a>
+                </li>
+              );
+            
+            })}
+
+            {/* <li className={`nav-itemsBar border-b-4 ${ulineColors[4]}`}> <a onClick={() => underline(4)} href="#">{link}</a></li> */}
+
+
+
 
           </ul>
         </nav>
