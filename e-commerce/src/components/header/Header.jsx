@@ -1,32 +1,33 @@
-import { useState } from "react"
-
-import iconMenu from "../../../../asset-template/images/icon-menu.svg"
-import sneakersLogo from "../../../../asset-template/images/logo.svg"
-import iconCart from "../../../../asset-template/images/icon-cart.svg"
-import imageAvatar from "../../../../asset-template/images/image-avatar.png"
-
-import "./Header.css"
 
 
-const root = document.getElementById("root")
+// Pattern N°2:
 
-const iconCartPath = "M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+import { useState } from "react";
+import ShoppingCart from "../shoppingCart/ShoppingCart";
 
-const iconClosePath = "m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+import iconMenu from "../../../../asset-template/images/icon-menu.svg";
+import sneakersLogo from "../../../../asset-template/images/logo.svg";
+import iconCart from "../../../../asset-template/images/icon-cart.svg";
+import imageAvatar from "../../../../asset-template/images/image-avatar.png";
 
+import "./Header.css";
 
+const root = document.getElementById("root");
+
+const iconCartPath =
+  "M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z";
+
+const iconClosePath =
+  "m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z";
 
 export default function Header() {
-
-  let [handleBackInset,setHandleBackInset] = useState("hidden")
-  
-  let [navColPosition,setNavColPosition] = useState("left-[-250px]")
-
+  const [handleBackInset, setHandleBackInset] = useState("hidden");
+  const [navColPosition, setNavColPosition] = useState("left-[-250px]");
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   function showNavMobileColumn() {
     root.classList.remove("overflow-auto");
     root.classList.add("overflow-hidden");
-    
 
     setHandleBackInset("");
     setNavColPosition("left-[0px]");
@@ -42,220 +43,141 @@ export default function Header() {
 
   window.onresize = () => {
     closeNavMobileColumn();
-  }
+  };
 
-
-
-  const [ulineColors, setUlineColors] = useState(["transparent","transparent","transparent","transparent","transparent"])
+  const [ulineColors, setUlineColors] = useState([
+    "[#ff7d1a]",
+    "transparent",
+    "transparent",
+    "transparent",
+    "transparent",
+  ]);
 
   function underline(idx) {
-    setUlineColors(ulineColors.map((color,ind) => (ind===idx)? "[#ff7d1a]" : "transparent"))
+    setUlineColors(
+      ulineColors.map((color, ind) => (ind === idx ? "[#ff7d1a]" : "transparent"))
+    );
   }
 
-    
   return (
+    <header
+      id="header"
+      className="bg-white p-5 z-2 sticky top-0 w-full h-[70px] flex items-center"
+    >
+      <div
+        id="background-inset"
+        className={`bg-black opacity-75 h-screen absolute inset-0 z-20 ${handleBackInset}`}
+        onClick={closeNavMobileColumn}
+      ></div>
 
-    <header id="header" className="bg-white p-5 z-2
-    sticky top-0
-    w-full h-[70px]
-    flex items-center
-    ">
-
-      <div id="background-inset" 
-      className={`bg-black opacity-75 h-screen absolute inset-0 z-20 ${handleBackInset}`}
-      onClick={closeNavMobileColumn}>
-      </div>      
-
-      <nav id="nav-mobileColumn" 
-      className={`bg-white text-black overflow-auto absolute top-0 z-30
-      transition-[left] duration-300 ${navColPosition}
-      w-[68%] max-w-[250px]
-      h-screen`}>
-        
-        <div id="nav-closeIcon-div" 
-        className="p-5 flex items-center
-        w-full h-[75px]">
-
-          <button className="bg-slate-300 size-7 flex justify-center items-center rounded-full
-          hover:cursor-pointer"
-          onClick={closeNavMobileColumn}>
-
+      <nav
+        id="nav-mobileColumn"
+        className={`bg-white text-black overflow-auto absolute top-0 z-30 transition-[left] duration-300 ${navColPosition} w-[68%] max-w-[250px] h-screen`}
+      >
+        <div
+          id="nav-closeIcon-div"
+          className="p-5 flex items-center w-full h-[75px]"
+        >
+          <button
+            className="bg-slate-300 size-7 flex justify-center items-center rounded-full hover:cursor-pointer"
+            onClick={closeNavMobileColumn}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
-              <path d={iconClosePath} fill="#69707D" fill-rule="evenodd"/>
+              <path d={iconClosePath} fill="#69707D" fillRule="evenodd" />
             </svg>
           </button>
-          
         </div>
-        
 
-        <div id="nav-links2" 
-        className="overflow-auto pb-5
-        w-full h-[calc(100%-75px)]">
-
-          <ul id="nav-links-ul2" 
-          className="px-5 font-bold text-[#1d2025]">
-            <li className="nav-itemsCol"><a href="#">Collections</a></li>
-            <li className="nav-itemsCol"><a href="#">Men</a></li>
-            <li className="nav-itemsCol"><a href="#">Women</a></li>
-            <li className="nav-itemsCol"><a href="#">About</a></li>
-            <li className="nav-itemsCol"><a href="#">Contact</a></li>
+        <div
+          id="nav-links2"
+          className="overflow-auto pb-5 w-full h-[calc(100%-75px)]"
+        >
+          <ul
+            id="nav-links-ul2"
+            className="px-5 font-bold text-[#1d2025]"
+          >
+            <li className="nav-itemsCol">
+              <a href="#">Collections</a>
+            </li>
+            <li className="nav-itemsCol">
+              <a href="#">Men</a>
+            </li>
+            <li className="nav-itemsCol">
+              <a href="#">Women</a>
+            </li>
+            <li className="nav-itemsCol">
+              <a href="#">About</a>
+            </li>
+            <li className="nav-itemsCol">
+              <a href="#">Contact</a>
+            </li>
           </ul>
-
         </div>
-
       </nav>
 
-
-    
-      <button id="icon-menu" onClick={showNavMobileColumn}
-      className="relative left-0 transition-[left] duration-300 delay-0 
-      w-5 h-5
-      ">
-        <img src={iconMenu} alt="#"/>
+      <button
+        id="icon-menu"
+        onClick={showNavMobileColumn}
+        className="relative left-0 transition-[left] duration-300 delay-0 w-5 h-5"
+      >
+        <img src={iconMenu} alt="#" />
       </button>
 
-      
       <div id="desktop-header" className="w-full">
-        
-
         <div id="sneakers-div" className="h-full flex items-center">
-          <img id="sneakers-logo" src={sneakersLogo} alt="e-commerce-Logo" 
-          className=" z-0 h-5 relative left-5
-          transition-[left] duration-300" />
+          <img
+            id="sneakers-logo"
+            src={sneakersLogo}
+            alt="e-commerce-Logo"
+            className=" z-0 h-5 relative left-5 transition-[left] duration-300"
+          />
         </div>
-        
 
-
-        <nav id="nav-mobileBar"
-        className="absolute left-[-500px] top-5 h-full
-        transition-[left] duration-300 
-        ">
-          <ul id="nav-links-ul1" 
-          className="px-5 font-bold text-[#1d2025] 
-          flex items-center gap-[6%]
-          h-full">
+        <nav
+          id="nav-mobileBar"
+          className="absolute left-[-500px] top-5 h-full transition-[left] duration-300"
+        >
+          <ul
+            id="nav-links-ul1"
+            className="px-5 font-bold text-[#1d2025] flex items-center gap-[6%] h-full"
+          >
             <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[0]}`}><a onClick={() => underline(0)} href="#">Collections</a></li>
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[1]}`}><a onClick={() => underline(1)} href="#">Men</a></li>
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[2]}`}><a onClick={() => underline(2)} href="#">Women</a></li>
+
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[1]}`}> <a onClick={() => underline(1)} href="#">Men</a></li>
+
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[2]}`}> <a onClick={() => underline(2)} href="#">Women</a></li>
+
             <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[3]}`}><a onClick={() => underline(3)} href="#">About</a></li>
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[4]}`}><a onClick={() => underline(4)} href="#">Contact</a></li>
+
+            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[4]}`}> <a onClick={() => underline(4)} href="#">Contact</a></li>
+
           </ul>
         </nav>
 
-        
-
-        <button id="icon-cart-div" className="w-[24px] h-7 flex items-center absolute top-5 right-16 transition-[right] duration-300">
-          <svg id="icon-cart" xmlns="http://www.w3.org/2000/svg" width="22" height="20"
-          className="">
-            <path d={iconCartPath} fill="#69707D" fill-rule="nonzero"/>
+        {/* Botón del carrito */}
+        <button
+          id="icon-cart-div"
+          className="w-[24px] h-7 flex items-center absolute top-5 right-16 transition-[right] duration-300"
+          onClick={() => setIsCartOpen(!isCartOpen)}
+        >
+          <svg id="icon-cart" xmlns="http://www.w3.org/2000/svg" width="22" height="20" className="">
+            <path d={iconCartPath} fill="#69707D" fillRule="nonzero" />
           </svg>
         </button>
-        
 
-        <button id="image-avatar" 
-        className="h-7 w-7 absolute top-5 right-5">
-          <img  src={imageAvatar} alt="user-avatar"/>
+
+        <button
+          id="image-avatar"
+          className="h-7 w-7 absolute top-5 right-5"
+        >
+          <img src={imageAvatar} alt="user-avatar" />
         </button>
 
-        
-
+        {/* Ventana flotante del carrito */}
+        <ShoppingCart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
       </div>
-
-      
-
     </header>
-
-    
   );
 }
 
-
-
-{/* <header className="bg-white p-5 z-2
-    sticky top-0
-    w-full h-[75px]
-    flex items-center
-    ">
-
-      <div id="background-inset" 
-      className={`bg-black opacity-75 h-screen absolute inset-0 z-20 ${handleBackInset}`}
-      onClick={closeNavMobileColumn}>
-      </div>      
-
-      <nav id="nav-mobileColumn" 
-      className={`bg-white text-black overflow-auto absolute top-0 z-30
-      transition-[left] duration-300 ${navColPosition}
-      w-[250px]
-      h-screen`}>
-        
-        <div id="nav-closeIcon-div" 
-        className="p-5 flex items-center
-        w-full h-[75px]">
-
-          <div className="bg-slate-300 size-7 flex justify-center items-center rounded-full
-          hover:cursor-pointer"
-          onClick={closeNavMobileColumn}>
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
-              <path d={iconClosePath} fill="#69707D" fill-rule="evenodd"/>
-            </svg>
-          </div>
-          
-        </div>
-        
-
-        <div id="nav-links2" 
-        className="overflow-auto pb-5
-        w-full h-[calc(100%-75px)]">
-
-          <ul id="nav-links-ul2" 
-          className="px-5 font-bold text-[#1d2025]">
-            <li className="nav-itemsCol"><a href="#">Collections</a></li>
-            <li className="nav-itemsCol"><a href="#">Men</a></li>
-            <li className="nav-itemsCol"><a href="#">Women</a></li>
-            <li className="nav-itemsCol"><a href="#">About</a></li>
-            <li className="nav-itemsCol"><a href="#">Contact</a></li>
-          </ul>
-
-        </div>
-
-      </nav>
-
-
-      <img id="icon-menu" src={iconMenu} alt="#"
-      className="relative left-0 transition-[left] delay-150 hover:cursor-pointer"
-      onClick={showNavMobileColumn}/>
-
-
-      <img id="sneakers-logo" src={sneakersLogo} alt="e-commerce-Logo" 
-      className="absolute z-0
-      transition-[left] duration-300 left-[56px]" />
-
-      <nav id="nav-mobileBar"
-      className="absolute left-[-425px] bg-red-800
-      transition-[left] duration-300
-      ">
-        <ul id="nav-links-ul1" 
-        className="px-5 font-bold text-[#1d2025] flex justify-between items-center
-        h-[75px] ">
-          <li className="nav-itemsBar"><a href="#">Collections</a></li>
-          <li className="nav-itemsBar"><a href="#">Men</a></li>
-          <li className="nav-itemsBar"><a href="#">Women</a></li>
-          <li className="nav-itemsBar"><a href="#">About</a></li>
-          <li className="nav-itemsBar"><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-
-
-      <svg id="icon-cart" xmlns="http://www.w3.org/2000/svg" width="22" height="20"
-      className="absolute right-[68px] transition-[right] duration-300 hover:cursor-pointer">
-        <path d={iconCartPath} fill="#69707D" fill-rule="nonzero"/>
-      </svg>
-
-
-      <img id="image-avatar" src={imageAvatar} alt="user-avatar" 
-      className="w-7 h-7 absolute right-5 hover:cursor-pointer
-      transition-[scale] duration-300" />
-
-    </header> */}
 
