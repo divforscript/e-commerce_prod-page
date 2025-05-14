@@ -47,15 +47,15 @@ export default function Header() {
 
   const [ulineColors, setUlineColors] = useState([
     "[#ff7d1a]",
-    "transparent",
-    "transparent",
-    "transparent",
-    "transparent",
+    "[#ffffff]",
+    "[#ffffff]",
+    "[#ffffff]",
+    "[#ffffff]",
   ]);
 
   function underline(idx) {
     setUlineColors(
-      ulineColors.map((color, ind) => (ind === idx ? "[#ff7d1a]" : "transparent"))
+      ulineColors.map((color, ind) => (ind === idx ? "[#ff7d1a]" : "[#ffffff]"))
     );
   }
 
