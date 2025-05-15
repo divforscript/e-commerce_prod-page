@@ -82,7 +82,7 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="bg-red-400 w-full h-[70px] p-5 sticky top-0 flex items-center"
+      className="bg-red-400 w-full h-[70px] p-5 sticky z-10 top-0 flex items-center"
     >
       {/* <div
         id="background-inset"
