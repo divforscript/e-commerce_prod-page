@@ -70,7 +70,7 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="bg-emerald-400 p-5 sticky top-0 w-full h-[70px] flex items-center"
+      className="p-5 sticky top-0 w-full h-[70px] flex items-center"
     >
       {/* <div
         id="background-inset"
