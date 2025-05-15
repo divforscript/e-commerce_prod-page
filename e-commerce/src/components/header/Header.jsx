@@ -30,6 +30,8 @@ export default function Header() {
     root.classList.remove("overflow-auto");
     root.classList.add("overflow-hidden");
 
+
+    setIsCartOpen(!isCartOpen);
     setIsModalOpen(!isModalOpen);
     setNavColPosition("left-[0px]");
   }
@@ -65,6 +67,9 @@ export default function Header() {
     setUlineColors(
       ulineColors.map((color, ind) => ind === idx ? b_sel : b_usel)
     );
+
+    setIsCartOpen(false);
+
   }
 
   return (

@@ -12,16 +12,7 @@ export default function ShoppingCart({ isOpen, setIsOpen, closeNavMob }) {
 
   return (
 
-    <>
-
-      <BackgroundInset
-        bgColor="bg-transparent"
-        zIndex={"z-10"}
-        closeNavMob={()=>{setIsOpen(false)}}
-      />
-
-
-      <div id="cart-box"
+    <div id="cart-box"
         className="bg-white fixed top-20 left-0
         rounded-xl z-20 ml-[3vw]
         w-[94%]
@@ -57,10 +48,8 @@ export default function ShoppingCart({ isOpen, setIsOpen, closeNavMob }) {
           }
           
         </div>
-        
     
       </div>
-    </>
 
   );
 }
