@@ -4,6 +4,7 @@
 
 import { useState } from "react";
 import ShoppingCart from "../shoppingCart/ShoppingCart";
+import BackgroundInset from "../backInset/BackgroundInset";
 
 import iconMenu from "../../../../asset-template/images/icon-menu.svg";
 import sneakersLogo from "../../../../asset-template/images/logo.svg";
@@ -21,7 +22,7 @@ const iconClosePath =
   "m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z";
 
 export default function Header() {
-  const [handleBackInset, setHandleBackInset] = useState("hidden");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [navColPosition, setNavColPosition] = useState("left-[-250px]");
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -29,7 +30,7 @@ export default function Header() {
     root.classList.remove("overflow-auto");
     root.classList.add("overflow-hidden");
 
-    setHandleBackInset("");
+    setIsModalOpen(!isModalOpen);
     setNavColPosition("left-[0px]");
   }
 
@@ -37,7 +38,7 @@ export default function Header() {
     root.classList.remove("overflow-hidden");
     root.classList.add("overflow-auto");
 
-    setHandleBackInset("hidden");
+    setIsModalOpen(false);
     setNavColPosition("left-[-250px]");
   }
 
@@ -69,17 +70,24 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="bg-white p-5 z-2 sticky top-0 w-full h-[70px] flex items-center"
+      className="bg-emerald-400 p-5 sticky top-0 w-full h-[70px] flex items-center"
     >
-      <div
+      {/* <div
         id="background-inset"
-        className={`bg-black opacity-75 h-screen absolute inset-0 z-20 ${handleBackInset}`}
+        className={`bg-black opacity-75 h-screen absolute inset-0 z-30 ${handleBackInset}`}
         onClick={closeNavMobileColumn}
-      ></div>
+      ></div> */}
+
+      { isModalOpen && 
+        (<BackgroundInset 
+            zIndex={"z-30"}
+            closeNavMob={closeNavMobileColumn}
+        />) 
+      }  
 
       <nav
         id="nav-mobileColumn"
-        className={`bg-white text-black overflow-auto absolute top-0 z-30 transition-[left] duration-300 ${navColPosition} w-[68%] max-w-[250px] h-screen`}
+        className={`bg-white text-black overflow-auto absolute top-0 z-30 transition-[left] duration-300 ${navColPosition} w-[90%] max-w-[250px] h-screen`}
       >
         <div
           id="nav-closeIcon-div"
@@ -207,6 +215,14 @@ export default function Header() {
         </button>
 
 
+        {/* Ventana flotante del carrito */}
+        <ShoppingCart 
+          isOpen={isCartOpen} 
+          setIsOpen={setIsCartOpen}
+          closeNavMob={closeNavMobileColumn}
+        />
+
+
         <button
           id="image-avatar"
           className="h-7 w-7 absolute top-5 right-5"
@@ -214,11 +230,19 @@ export default function Header() {
           <img src={imageAvatar} alt="user-avatar" />
         </button>
 
-        {/* Ventana flotante del carrito */}
-        <ShoppingCart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
+        
       </div>
     </header>
   );
 }
 
 
+
+
+// { isModalOpen && 
+//         (<BackgroundInset 
+//             closeNavMob={closeNavMobileColumn}
+//             insetOpacity={"opacity-75"}
+//             zIndex={"z-30"}
+//         />) 
+//       }  
