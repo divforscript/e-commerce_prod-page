@@ -6,7 +6,7 @@ function App() {
   return (
     
     <div id="page-wrapper"
-    className="bg-slate-900 relative
+    className="bg-white relative text-[#000]
     min-w-[300px]
     min-h-[900p]x">
       
