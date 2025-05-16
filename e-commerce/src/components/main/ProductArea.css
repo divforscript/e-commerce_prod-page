@@ -1,0 +1,48 @@
+
+#product-name {
+  font-size: clamp(28px,calc(2vw + 20px),50px);
+}
+
+#product-description {
+  font-size: 17px;
+  margin-top: calc(3vw - 25px);
+}
+
+
+@media only screen and (437px < width <= 768px) {
+  #product-description {
+    font-size: clamp(20px,calc(1.2vw + 15px),24px);
+  }
+}
+
+
+@media only screen and (768px < width) {
+  #main-product-area {
+    padding: calc(8vw + 20px) 70px;
+  }
+
+  #product-name {
+    line-height: normal;
+  }
+
+  #product-pricing {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  #price-and-discount {
+    width: 100%;
+    gap: 1vw;
+  }
+
+  #price-and-discount > span:first-child {
+    font-size: 32px;
+  }
+
+  #original-price {
+    width: 100%;
+    justify-content: start;
+    margin-top: 8px;
+  }
+
+}
