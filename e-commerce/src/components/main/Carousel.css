@@ -1,0 +1,39 @@
+
+
+@media only screen and (768px < width) {
+  #prev-imgProd-button {
+    display: none;
+  }
+
+  #next-imgProd-button {
+    display: none;
+  }
+
+
+  #current-product-img {
+    width: 100%;
+    max-width: none;
+
+    height: auto;
+
+    border-radius: 20px;
+  }
+
+  
+  #product-thumbnails {
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+    
+  }
+
+  .thumb-button {
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+
+
+}

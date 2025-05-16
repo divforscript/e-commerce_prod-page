@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./Carousel.css"
+
 
 import img1 from "../../../../asset-template/images/image-product-1.jpg";
 import img1Thumb from "../../../../asset-template/images/image-product-1-thumbnail.jpg";
@@ -16,6 +18,8 @@ import img4Thumb from "../../../../asset-template/images/image-product-4-thumbna
 
 import iconPrev from "../../../../asset-template/images/icon-previous.svg"
 import iconNext from "../../../../asset-template/images/icon-next.svg"
+
+
 
 const images = [
   { src: img1, alt: "Product view 1" },
@@ -35,28 +39,30 @@ const imagesThumb = [
 const imagesMaxIdx = images.length - 1
 
 
+
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
 
   const goPrev = () => setCurrent((prev) => prev === 0 ? imagesMaxIdx : prev - 1 );
   const goNext = () => setCurrent((prev) => prev === imagesMaxIdx ? 0 : prev + 1);
 
+
   return(
     <div id="carousel-section"
-      className="bg-emerald-400 relative
+      className="relative
       flex flex-col items-center justify-center
       w-full 
-      h-[360px]"
+      h-[320px]"
       aria-label="Product image carousel"
     >
-        <img
+        <img id="current-product-img"
           src={images[current].src}
           alt={images[current].alt}
-          className="object-cover w-full h-full max-w-[460px]"
+          className="object-cover w-full max-w-[460px] h-full"
         />
         
         {/* Prev Button */}
-        <button
+        <button id="prev-imgProd-button"
           onClick={goPrev}
           aria-label="Previous product image"
           className={`left-4 bg-white absolute
@@ -71,7 +77,7 @@ export default function Carousel() {
 
 
         {/* Next Button */}
-        <button
+        <button id="next-imgProd-button"
           onClick={goNext}
           aria-label="Next product image"
           className={`right-4 bg-white absolute
@@ -85,17 +91,19 @@ export default function Carousel() {
         </button>
 
 
-        <div 
-        className="bg-amber-400 w-full hidden"
+        <div id="product-thumbnails"
+        className="bg-[#fff] w-full hidden"
         >
           {imagesThumb.map((img, idx) => (
             <button
               key={img.alt}
               onClick={() => setCurrent(idx)}
               aria-label={`Go to image ${idx + 1}`}
+              className={`thumb-button border-4 
+              ${idx === current? "border-[#ff7d1a]" : "border-[#fff]"}`}
             >
-              <img src={img.src} alt={img.alt} 
-              className="size-20"/>
+              <img src={img.src} alt={img.alt}
+              className={`${idx === current? "opacity-40" : ""}`}/>
             </button>
 
           ))}

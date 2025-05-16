@@ -2,7 +2,6 @@ import Header from "./components/header/Header"
 import Main from "./components/main/Main";
 
 
-
 function App() {
 
   return (
@@ -10,11 +9,11 @@ function App() {
     <div id="page-wrapper"
     className="bg-white relative text-[#000]
     min-w-[300px]
-    min-h-[900p]x">
+    min-h-[900px]">
       
       <Header />
 
-      <Main/>
+      <Main />
 
     </div>
     

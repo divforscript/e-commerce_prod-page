@@ -20,7 +20,7 @@ const iconCartPath =
 import imageAvatar from "../../../../asset-template/images/image-avatar.png";
 
 
-
+// Bad practice
 const root = document.getElementById("root");
 
 
@@ -46,10 +46,12 @@ export default function Header() {
 
     setIsModalOpen(false);
     setNavColPosition("left-[-250px]");
+
   }
 
   window.onresize = () => {
     closeNavMobileColumn();
+    console.log("Esto es un console log header")
   };
 
 
@@ -82,7 +84,7 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="bg-red-400 w-full h-[70px] p-5 sticky z-10 top-0 flex items-center"
+      className="bg-[#fff] w-full h-[70px] p-5 sticky z-10 top-0 flex items-center"
     >
       {/* <div
         id="background-inset"

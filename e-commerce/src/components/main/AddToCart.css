@@ -1,0 +1,17 @@
+
+
+@media only screen and (768px < width) {
+  #box-add-to-cart {
+    padding: 0px 70px;
+
+    position: relative;
+    top: calc(-3vw - 57px);
+  }
+}
+
+
+@media only screen and (1080px < width) {
+  #box-add-to-cart {
+    flex-direction: row;
+  }
+}
