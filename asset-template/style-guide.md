@@ -25,6 +25,8 @@ The designs were created to the following widths:
 - White: hsl(0, 0%, 100%)
 - Black (with 75% opacity for lightbox background): hsl(0, 0%, 0%)
 
+- alert #e63939
+
 ## Typography
 
 ### Body Copy

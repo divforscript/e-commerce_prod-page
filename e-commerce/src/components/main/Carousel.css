@@ -9,6 +9,19 @@
     display: none;
   }
 
+  #carousel-section {
+    grid-area: 1/1/4/2;
+
+    height: 100%;
+    padding: 56px calc(9vw - 68px) 0px;
+
+    display: flex;
+    
+    justify-content: start;
+
+    gap: 32px;
+    
+  }
 
   #current-product-img {
     width: 100%;
