@@ -135,18 +135,13 @@ export default function ShoppingCart({ isOpen }) {
   return (
 
     <div id="cart-box"
-      className="bg-red-400 absolute top-[76px]
+      className="absolute top-[76px]
       rounded-xl z-20 overflow-hidden
       w-[94%]
       min-h-[260px] h-auto"
     >
-
-      {/* className="bg-red-400 fixed top-20 left-0 overflow-hidden
-      rounded-xl z-20 ml-[3vw]
-      w-[94%]
-      min-h-[260px] h-auto" */}
       
-      {/* <h2 id="cart-title"
+      <h2 id="cart-title"
         className="text-[black] text-lg font-bold bg-emerald-400
         border-b-2 border-b-[#e4e5e9] p-6
         w-full h-16"
@@ -179,7 +174,7 @@ export default function ShoppingCart({ isOpen }) {
           )
         }
           
-      </div> */}
+      </div>
       
     
     </div>
