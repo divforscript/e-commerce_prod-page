@@ -49,17 +49,27 @@ export default function Carousel() {
 
   return(
     <div id="carousel-section"
-      className="relative
+      className="relative bg-slate-200
       flex flex-col items-center justify-center
       w-full 
       h-[320px]"
       aria-label="Product image carousel"
     >
-        <img id="current-product-img"
+        {/* <img id="current-product-img"
           src={images[current].src}
           alt={images[current].alt}
           className="object-cover w-full max-w-[460px] h-full"
-        />
+        /> */}
+
+        <button id="current-product-img"
+          className="h-full w-full max-w-[420px] "
+        >
+          <img 
+            src={images[current].src}
+            alt={images[current].alt}
+            className="h-full w-full object-cover"
+          />
+        </button>
         
         {/* Prev Button */}
         <button id="prev-imgProd-button"
