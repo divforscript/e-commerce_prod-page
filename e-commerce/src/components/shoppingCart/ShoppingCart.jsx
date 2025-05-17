@@ -4,35 +4,125 @@ import BackgroundInset from "../backInset/BackgroundInset";
 
 import "../shoppingCart/ShoppingCart.css"
 
+import iconDelete from "../../../../asset-template/images/icon-delete.svg"
 
 
+import prueba1 from "../../../../asset-template/images/image-product-1.jpg"
 
-function ItemsOnCart() {
+const availableProds = [
+  {
+    id: 1,
+    url: "../../../../asset-template/images/image-product-1.jpg",
+    manufacturer: "SNEAKER COMPANY",
+    name: "Fall Limited Edition Sneakers - Type 1",
+    description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+    originalPrice: 250,
+    discount: 50,
+
+  },
+
+  {
+    id: 2,
+    url: "../../../../asset-template/images/image-product-2.jpg",
+    manufacturer: "SNEAKER COMPANY",
+    name: "Fall Limited Edition Sneakers - Type 1",
+    description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+    originalPrice: 120,
+    discount: 20,
+
+  },
+
+  {
+    id: 3,
+    url: "../../../../asset-template/images/image-product-3.jpg",
+    manufacturer: "SNEAKER COMPANY",
+    name: "Fall Limited Edition Sneakers - Type3",
+    description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+    originalPrice: 450,
+    discount: 10,
+
+  },
+
+  {
+    id: 4,
+    url: "../../../../asset-template/images/image-product-4.jpg",
+    manufacturer: "SNEAKER COMPANY",
+    name: "Fall Limited Edition Sneakers - Type 4",
+    description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+    originalPrice: 160,
+    discount: 45,
+
+  }
+]
+
+const addedItems = [
+  {...availableProds[0],cantidad: 3},
+  {...availableProds[2],cantidad: 5},
+  {...availableProds[2],cantidad: 5},
+  {...availableProds[2],cantidad: 5},
+  {...availableProds[2],cantidad: 5},
+]
+
+
+function ItemsOnCart({ itemsArray }) {
   return(
     <div
-      className="bg-amber-400 overflow-auto
-      max-h-[calc(70vh-200px)]
+      className="bg-amber-400 overflow-y-auto pr-1
+      w-full
+      min-h-[100px] max-h-[calc(70vh-210px)]
       "
-    >
-      esto es un item
+    > 
+      {
+        itemsArray.map((item,idx) => {
+          return(
+            <div
+              id={idx}
+              key={item.id}
+              className="flex justify-between items-center mb-4
+              w-full"
+            >
+              <img src={prueba1} alt=""
+                className="size-14 rounded-lg" 
+              />
 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore dolorum amet veniam. Molestiae voluptatum ipsam maxime tempore perspiciatis eligendi deserunt omnis animi, eveniet aperiam autem, beatae eius rem? Minima, velit.
+              <div
+                className="bg-indigo-400 px-3 text-[#68707d] text-[12px]
+                w-[70%]"
+              >
+                <span>{item.name}</span>
 
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sed facere dolore qui inventore eius corrupti molestiae perspiciatis alias, illum ipsam numquam possimus distinctio fugit iste hic! Amet, est vero!
+                <div
+                  className="flex gap-2"
+                >
+                  <span>
+                    {"$".concat((item.originalPrice * (100 - item.discount) * 0.01).toFixed(2))} x {item.cantidad}
+                  </span>
+                  
+                  <span
+                    className="font-bold text-[#000] ml-1"
+                  >
+                    {"$".concat((item.originalPrice * (100 - item.discount) * 0.01 * item.cantidad).toFixed(2))}
+                  </span>
+                </div>
+                
+              </div>
 
-
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor aspernatur enim dolore ducimus quas earum nobis, quo placeat maxime labore perspiciatis? Natus enim adipisci consequatur ipsa, sapiente nesciunt consectetur in!
-
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia expedita, magni blanditiis natus soluta in, repellendus minus quis id modi earum illo dolore possimus aliquid quo dolores architecto dicta saepe!
-
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis at hic nesciunt, ipsum enim soluta vero eos optio facilis amet numquam incidunt maiores quo exercitationem, praesentium ea non. Delectus, in FIN FIN.
-
+              <button
+                className="bg-sky-800"
+              >
+                <img src={iconDelete} alt=""
+                  className="h-5 w-4" 
+                />
+              </button>
+            </div>
+          );
+        })
+      }
+      
 
     </div>
   );
 }
-
-
 
 
 
@@ -66,7 +156,7 @@ export default function ShoppingCart({ isOpen }) {
       >
 
         { isWithItems 
-          ? < ItemsOnCart/> 
+          ? < ItemsOnCart itemsArray={addedItems} /> 
           : <p className="text-gray-600 font-bold text-lg
             w-full h-32 flex justify-center items-center"
             >
