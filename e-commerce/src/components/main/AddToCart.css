@@ -2,10 +2,11 @@
 
 @media only screen and (768px < width) {
   #box-add-to-cart {
-    padding: 0px 70px;
+    height: 100%;
+    padding: 0px 60px;
 
     position: relative;
-    top: calc(-3vw - 57px);
+    top: calc(-3vw - 60px);
   }
 }
 

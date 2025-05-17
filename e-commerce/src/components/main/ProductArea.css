@@ -18,7 +18,8 @@
 
 @media only screen and (768px < width) {
   #main-product-area {
-    padding: calc(8vw + 20px) 70px;
+    height: 100%;
+    padding: calc(5vw + 20px) 60px;
   }
 
   #product-name {

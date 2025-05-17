@@ -11,7 +11,7 @@ const productDetails = {
 }
 
 function getFinalPrice(original,disc){
-  return 0.01 * original * disc;
+  return 0.01 * original * (100 - disc);
 }
 
 export default function ProductArea() {

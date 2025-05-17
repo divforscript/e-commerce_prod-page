@@ -17,27 +17,13 @@
 
   #carousel-section {
     grid-area: 1/1/4/2;
-
-    height: 100%;
-    padding: 72px calc(9vw - 68px) 0px;
-
-    display: flex;
-    
-    justify-content: start;
-
-    gap: 32px;
-    
   }
 
   #main-product-area {
     grid-area: 1/2/3/3;
-
-    height: 100%;
   }
 
   #box-add-to-cart {
     grid-area: 3/2/4/3;
-
-    height: 100%;
   }
 }

@@ -23,6 +23,7 @@
 
 @media only screen and (768px < width) {
   #cart-box {
+    top: 90px;
     right: clamp(8px,calc(15vw - 80px),60px);
   }
 }

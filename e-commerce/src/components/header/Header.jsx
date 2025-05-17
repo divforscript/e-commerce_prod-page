@@ -84,7 +84,7 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="bg-[#fff] w-full h-[70px] p-5 sticky z-10 top-0 flex items-center"
+      className="bg-[#fff] w-full h-[70px] p-5 sticky z-10 top-0 flex items-center justify-center"
     >
       {/* <div
         id="background-inset"
@@ -167,8 +167,10 @@ export default function Header() {
         <img src={iconMenu} alt="#" />
       </button>
 
-      <div id="desktop-header" className="w-full">
-        <div id="sneakers-div" className="h-full flex items-center">
+      <div id="desktop-header" 
+        className="w-full bg-[#fff]"
+      >
+        <div id="sneakers-div" className="h-full flex">
           <img
             id="sneakers-logo"
             src={sneakersLogo}
@@ -233,11 +235,17 @@ export default function Header() {
 
 
         {/* Ventana flotante del carrito */}
-        <ShoppingCart 
+        {/* <ShoppingCart 
           isOpen={isCartOpen} 
           setIsOpen={setIsCartOpen}
           closeNavMob={closeNavMobileColumn}
-        />
+        /> no descomentar, el original es el siguiente*/}
+
+        {/* <ShoppingCart 
+          isOpen={isCartOpen} 
+          setIsOpen={setIsCartOpen}
+          closeNavMob={closeNavMobileColumn}
+        /> */}
 
 
         <button
@@ -247,8 +255,17 @@ export default function Header() {
           <img src={imageAvatar} alt="user-avatar" />
         </button>
 
-        
       </div>
+
+      
+      <ShoppingCart 
+          isOpen={isCartOpen} 
+          setIsOpen={setIsCartOpen}
+          closeNavMob={closeNavMobileColumn}
+      />
+      
+
+
     </header>
   );
 }
