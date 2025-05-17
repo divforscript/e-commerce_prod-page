@@ -233,6 +233,12 @@ export default function Header() {
 
 
         {/* Ventana flotante del carrito */}
+        {/* <ShoppingCart 
+          isOpen={isCartOpen} 
+          setIsOpen={setIsCartOpen}
+          closeNavMob={closeNavMobileColumn}
+        /> */}
+
         <ShoppingCart 
           isOpen={isCartOpen} 
           setIsOpen={setIsCartOpen}
