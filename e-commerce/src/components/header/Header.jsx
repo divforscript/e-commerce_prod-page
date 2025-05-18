@@ -51,7 +51,6 @@ export default function Header() {
 
   window.onresize = () => {
     closeNavMobileColumn();
-    console.log("Esto es un console log header")
   };
 
 
@@ -84,7 +83,8 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="bg-[#fff] w-full h-[70px] p-5 sticky z-10 top-0 flex items-center justify-center"
+      className="bg-[#fff] p-5 sticky z-10 top-0 flex items-center justify-center
+      w-full h-[70px]"
     >
       {/* <div
         id="background-inset"
