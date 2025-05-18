@@ -24,6 +24,57 @@ import imageAvatar from "../../../../asset-template/images/image-avatar.png";
 const root = document.getElementById("root");
 
 
+
+
+function NavColumn({position,closeFunction,iconPath,linksArray}) {
+  return(
+    <nav
+      id="nav-mobileColumn"
+      className={`bg-white text-black overflow-auto 
+      absolute top-0 z-30 transition-[left] duration-300 ${position} 
+      w-[90%] max-w-[250px] h-screen`}
+    >
+      <div
+        id="nav-closeIcon-div"
+        className="w-full h-[75px] p-5 flex items-center"
+      >
+        <button
+          className="bg-slate-300 size-7 rounded-full 
+          flex justify-center items-center hover:cursor-pointer"
+          onClick={closeFunction}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
+            <path d={iconPath} fill="#69707D" fillRule="evenodd" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id="nav-links2"
+        className="w-full h-[calc(100%-75px)] pb-5 overflow-auto"
+      >
+        <ul
+          id="nav-links-ul2"
+          className="font-bold text-[#1d2025] px-5 "
+        >
+          {linksArray.map((link,idx) => {
+            return(
+              <li key={link.name+"navCol"}
+                className="nav-itemsCol"
+              >
+                <a href="#">{link.name}</a>
+              </li>
+            );
+          })}
+          
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+
+
 export default function Header() {
   
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -31,6 +82,10 @@ export default function Header() {
 
   // Handle mobile nav bar behavior
   const [navColPosition, setNavColPosition] = useState("left-[-250px]");
+
+  // Cantidad de items agregados al carro
+  const [itemsQuant,setItemsQuant] = useState(3)
+  
   function showNavMobileColumn() {
     root.classList.remove("overflow-auto");
     root.classList.add("overflow-hidden");
@@ -92,72 +147,8 @@ export default function Header() {
         onClick={closeNavMobileColumn}
       ></div> */}
 
-      { isModalOpen && 
-        (<BackgroundInset 
-            zIndex={"z-30"}
-            closeNavMob={closeNavMobileColumn}
-        />) 
-      }  
-
-      <nav
-        id="nav-mobileColumn"
-        className={`bg-white text-black overflow-auto 
-        absolute top-0 z-30 transition-[left] duration-300 ${navColPosition} 
-        w-[90%] max-w-[250px] h-screen`}
-      >
-        <div
-          id="nav-closeIcon-div"
-          className="w-full h-[75px] p-5 flex items-center"
-        >
-          <button
-            className="bg-slate-300 size-7 rounded-full 
-            flex justify-center items-center hover:cursor-pointer"
-            onClick={closeNavMobileColumn}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
-              <path d={iconClosePath} fill="#69707D" fillRule="evenodd" />
-            </svg>
-          </button>
-        </div>
-
-        <div
-          id="nav-links2"
-          className="w-full h-[calc(100%-75px)] pb-5 overflow-auto"
-        >
-          <ul
-            id="nav-links-ul2"
-            className="font-bold text-[#1d2025] px-5 "
-          >
-            {/* <li className="nav-itemsCol">
-              <a href="#">Collections</a>
-            </li>
-            <li className="nav-itemsCol">
-              <a href="#">Men</a>
-            </li>
-            <li className="nav-itemsCol">
-              <a href="#">Women</a>
-            </li>
-            <li className="nav-itemsCol">
-              <a href="#">About</a>
-            </li>
-            <li className="nav-itemsCol">
-              <a href="#">Contact</a>
-            </li> */}
-
-            {navBarLinks.map((link,idx) => {
-              return(
-                <li key={link.name+"navCol"}
-                  className="nav-itemsCol"
-                >
-                  <a href="#">{link.name}</a>
-                </li>
-              );
-            })}
-            
-          </ul>
-        </div>
-      </nav>
-
+      
+      
       <button
         id="icon-menu"
         onClick={showNavMobileColumn}
@@ -166,6 +157,24 @@ export default function Header() {
       >
         <img src={iconMenu} alt="#" />
       </button>
+
+      { isModalOpen && (
+
+          <BackgroundInset 
+            id={"mobile-nav-column-inset"}
+            extraClasses="items-center top-0 left-0 z-30"
+            doOnEvent={() => closeNavMobileColumn()}
+          />
+        )
+      }
+
+      <NavColumn
+        position={navColPosition}
+        closeFunction={closeNavMobileColumn}
+        iconPath={iconClosePath}
+        linksArray={navBarLinks} 
+      />
+      
 
       <div id="desktop-header" 
         className="w-full bg-[#fff]"
@@ -189,17 +198,6 @@ export default function Header() {
             className="h-full px-5 font-bold text-[#1d2025] 
             flex items-center gap-[6%]"
           >
-            {/* <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[0]}`}><a onClick={() => underline(0)} href="#">Collections</a></li>
-
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[1]}`}> <a onClick={() => underline(1)} href="#">Men</a></li>
-
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[2]}`}> <a onClick={() => underline(2)} href="#">Women</a></li>
-
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[3]}`}><a onClick={() => underline(3)} href="#">About</a></li>
-
-            <li className={`nav-itemsBar border-b-4 border-b-${ulineColors[4]}`}> <a onClick={() => underline(4)} href="#">Contact</a></li> */}
-
-            
             {navBarLinks.map((link,idx) => {
               
               return(
@@ -207,8 +205,7 @@ export default function Header() {
                   key={link.id}
                   className={`nav-itemsBar border-b-4 ${ulineColors[idx]}`}
                 > 
-                  <a onClick={() => underline(idx)} href="#"
-                  > 
+                  <a onClick={() => underline(idx)} href="#"> 
                     {link.name}
                   </a>
                 </li>
@@ -224,29 +221,24 @@ export default function Header() {
         {/* Botón del carrito */}
         <button
           id="icon-cart-div"
-          className="w-[24px] h-7 absolute top-5 right-16 flex items-center 
+          className="w-[24px] h-7 absolute top-5 right-16 flex items-center
           transition-[right] duration-300"
           onClick={() => setIsCartOpen(!isCartOpen)}
-        >
+        > 
+
+          <span
+            className={`
+              ${itemsQuant
+                  ? "bg-[#ff7d1a] rounded-md absolute top-0 left-3 text-[8px] text-[#fff] font-bold w-4" 
+                  : "hidden"}`}
+          >
+            {itemsQuant}
+          </span>
+
           <svg id="icon-cart" xmlns="http://www.w3.org/2000/svg" width="22" height="20" className="">
             <path d={iconCartPath} fill="#69707D" fillRule="nonzero" />
           </svg>
         </button>
-
-
-        {/* Ventana flotante del carrito */}
-        {/* <ShoppingCart 
-          isOpen={isCartOpen} 
-          setIsOpen={setIsCartOpen}
-          closeNavMob={closeNavMobileColumn}
-        /> no descomentar, el original es el siguiente*/}
-
-        {/* <ShoppingCart 
-          isOpen={isCartOpen} 
-          setIsOpen={setIsCartOpen}
-          closeNavMob={closeNavMobileColumn}
-        /> */}
-
 
         <button
           id="image-avatar"

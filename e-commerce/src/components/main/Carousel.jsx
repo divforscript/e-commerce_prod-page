@@ -109,7 +109,7 @@ function DirectionButtons({
 function Current({ id,pageWidth,itemX,func,funcParameter }){
   return(
     <button id={id}
-      className={`h-auto w-full max-w-[720px] overflow-hidden`}
+      className={`h-auto w-full max-w-[420px]  overflow-hidden`}
       onClick={() => {
         if(pageWidth < 769){ func(false); return; }
         func(!funcParameter)

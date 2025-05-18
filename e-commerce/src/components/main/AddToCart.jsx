@@ -80,7 +80,7 @@ export default function AddToCart() {
       >
 
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20">
-          <path d={cartIconPath} fill="#000" fill-rule="nonzero"/>
+          <path d={cartIconPath} fill="#000"/>
         </svg>
 
         <span

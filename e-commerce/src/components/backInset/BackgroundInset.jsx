@@ -1,15 +1,15 @@
 
 
 export default function BackgroundInset({ 
-  id="page-inset",
+  id,
   // isOpen=false, comentado con anterioridad
   // top="top-0",
   // left="left-0",
   // zIndex="z-50",
   // align="items-center",
   extraClasses="items-center top-0 left-0 z-50",
-  closeNavMob=()=>{},
-  childComponent={} }) {
+  doOnEvent,
+  childComponent }) {
 
 
   return(
@@ -20,7 +20,7 @@ export default function BackgroundInset({
       flex flex-col justify-center
       ${extraClasses}`}
       
-      onClick={closeNavMob}
+      onClick={doOnEvent}
     >
       {childComponent}
     </div>
