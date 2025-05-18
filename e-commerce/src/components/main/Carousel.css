@@ -12,6 +12,7 @@
   #carousel-section {
     background-color: white;
 
+
     height: 100%;
     padding: 56px calc(9vw - 68px) 0px;
 
@@ -32,15 +33,21 @@
     border-radius: 20px;
   }
 
+  #carousel-inset {
+    left: calc(-1 * clamp(16px,calc(20vw - 162px),120px));
+  }
+
   
-  #product-thumbnails {
+
+  /* #product-thumbnails {
     width: 100%;
     
     display: flex;
     justify-content: space-between;
     gap: 1vw;
     
-  }
+  } */
+
 
   .thumb-button {
     overflow: hidden;
