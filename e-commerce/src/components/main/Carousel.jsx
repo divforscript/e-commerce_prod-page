@@ -24,6 +24,8 @@ import img4Thumb from "../../../../asset-template/images/image-product-4-thumbna
 import iconPrev from "../../../../asset-template/images/icon-previous.svg"
 import iconNext from "../../../../asset-template/images/icon-next.svg"
 
+const iconClosePath =
+  "m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z";
 
 
 const images = [
@@ -104,13 +106,13 @@ function DirectionButtons({
 }
 
 
-function Current({ pageWidth,itemX,func,funcAtrib }){
+function Current({ id,pageWidth,itemX,func,funcParameter }){
   return(
-    <button id="current-product-img"
-      className="h-full w-full max-w-[420px]"
+    <button id={id}
+      className={`h-auto w-full max-w-[720px] overflow-hidden`}
       onClick={() => {
         if(pageWidth < 769){ func(false); return; }
-        func(!funcAtrib)
+        func(!funcParameter)
       }}
     >
       <img
@@ -127,7 +129,7 @@ function Current({ pageWidth,itemX,func,funcAtrib }){
 function Thumbnail({ id,extraClasses,isShowed,thumbsArray,varX,setVarX }){
     return(
       <div id={id}
-        className={`bg-[#fff] ${extraClasses} 
+        className={` ${extraClasses} 
         ${isShowed? "flex justify-between" : "hidden"}`}
       >
         {thumbsArray.map((img, idx) => (
@@ -135,11 +137,11 @@ function Thumbnail({ id,extraClasses,isShowed,thumbsArray,varX,setVarX }){
             key={img.alt}
             onClick={() => setVarX(idx)}
             aria-label={`Go to image ${idx + 1}`}
-            className={`thumb-button border-4
-            ${idx === varX? "border-[#ff7d1a]" : "border-[#fff]"}`}
+            className={`bg-[#fff] h-[90%] rounded-2xl overflow-hidden
+            ${idx === varX? "border-4 border-[#ff7d1a]" : ""}`}
           >
             <img src={img.src} alt={img.alt}
-            className={`${idx === varX? "opacity-40" : ""}`}/>
+            className={`h-full ${idx === varX? "opacity-40" : ""}`}/>
           </button>
 
         ))}
@@ -153,7 +155,7 @@ function Thumbnail({ id,extraClasses,isShowed,thumbsArray,varX,setVarX }){
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
 
-  const [isModalOpen,setIsModalOpen] = useState(true);
+  const [isModalOpen,setIsModalOpen] = useState(false);
 
   const [showThumbs,setShowThumbs] = useState(getPageWidth() < 769 ? false : true)
 
@@ -195,16 +197,17 @@ export default function Carousel() {
         />
 
         <Current
+          id={"current-product-img"}
           pageWidth={getPageWidth()}
           itemX={images[current]}
           func={setIsModalOpen}
-          funcAtrib={isModalOpen}
+          funcParameter={isModalOpen}
         />
          
         <Thumbnail
           id={"product-thumbnails"}
           isShowed={showThumbs}
-          extraClasses={"w-full gap-[1vw]"}
+          extraClasses={"w-full gap-[2vw]"}
           thumbsArray={imagesThumb} 
           varX={current} 
           setVarX={setCurrent}
@@ -215,51 +218,47 @@ export default function Carousel() {
 
             <BackgroundInset 
               id={"carousel-inset"} 
-              zIndex={"z-50"} 
-              top={"top-[-84px]"}
-              isOpen={isModalOpen}
-
+              extraClasses="min-h-[480px] z-50 items-center top-[-84px]"
+              
               childComponent={
                 
                 <div id="carousel-preview"
-                  className="bg-amber-400
-                  w-1/2 px-10
-                  flex flex-col justify-center items-center"
+                  className="px-10 flex flex-col justify-center items-center
+                  min-w-[500px] w-1/2 max-w-[600px]"
                 > 
 
                   <button
-                  className="bg-red-400 w-full flex justify-end mb-3"
+                  className="w-full max-w-[600px] flex justify-end mb-3"
                   onClick={() => setIsModalOpen(false)}
                   >
-                    <img src={iconClose} alt="" 
-                      className="size-6 p-1 bg-slate-300 rounded-xl"
-                    />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
+                      <path d={iconClosePath} fill="#fff" fillRule="evenodd" />
+                    </svg>
                   </button>
 
                   <DirectionButtons 
                     prevId={"modal-prev-imgProd-button"}
                     iconPrev={iconPrev}
                     goPrev={goPrev}
-                    extraPrevClasses="left-[calc(25vw+20px)]"
+                    extraPrevClasses={`left-[calc(50vw-250px+20px)] top-[max(260px,calc(50vh-50px))]`}
 
                     nextId={"modal-next-imgProd-button"}
                     iconNext={iconNext}
                     goNext={goNext}
-                    extraNextClasses="right-[calc(25vw+20px)]"
+                    extraNextClasses="right-[calc(50vw-250px+20px)] top-[max(260px,calc(50vh-50px))]"
                   />
 
                   <Current
+                    id={"modal-current-product-img"}
                     pageWidth={getPageWidth()}
                     itemX={images[current]}
-                    func={setIsModalOpen}
-                    funcAtrib={isModalOpen}
                   />
 
 
                   <Thumbnail
                     id={"modal-product-thumbnails"}
                     isShowed={showThumbs}
-                    extraClasses={"w-3/4 gap-[0.7vw] mt-5"}
+                    extraClasses={"w-3/4 gap-[1.5vw] mt-5"}
                     thumbsArray={imagesThumb} 
                     varX={current} 
                     setVarX={setCurrent}
@@ -272,7 +271,6 @@ export default function Carousel() {
             />
 
               
-
           )
 
         }
@@ -286,47 +284,3 @@ export default function Carousel() {
 
 
 
-
-{/* { isModalOpen && (
-
-
-            <BackgroundInset 
-              id={"carousel-inset"} 
-              zIndex={"z-50"} 
-              top={"top-[-84px]"}
-              isOpen={isModalOpen}
-
-              childComponent={
-                <section
-                  className="bg-amber-400"
-                > 
-
-                  <button
-                  className=""
-                  onClick={() => setIsModalOpen(false)}
-                  >
-                    <img src={iconClose} alt="" 
-                      className="size-7"
-                    />
-                  </button>
-
-
-                  <Thumbnail
-                    id={"modal-product-thumbnails"}
-                    isShowed={showThumbs}
-                    thumbsArray={imagesThumb} 
-                    varX={current} 
-                    setVarX={setCurrent}
-                  />
-
-
-                </section>
-              }
-              
-            />
-
-              
-
-          )
-        
-        } */}
