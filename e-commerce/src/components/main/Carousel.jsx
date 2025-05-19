@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 
 import "./Carousel.css"
 
@@ -156,6 +156,8 @@ export default function Carousel() {
 
   const [isModalOpen,setIsModalOpen] = useState(false);
 
+  const [closeIconColor,setCloseIconColor] = useState("#fff");
+
   const [showThumbs,setShowThumbs] = useState(getPageWidth() < 769 ? false : true)
 
   const goPrev = () => setCurrent((prev) => prev === 0 ? imagesMaxIdx : prev - 1 );
@@ -217,10 +219,15 @@ export default function Carousel() {
 
                   <button
                   className="w-full max-w-[600px] flex justify-end mb-3"
-                  onClick={() => setIsModalOpen(false)}
+                  onMouseOver={() => setCloseIconColor("#ff7d1a")}
+                  onMouseOut={() => setCloseIconColor("#fff")}
+                  onClick={() => {
+                    setCloseIconColor("#fff")
+                    setIsModalOpen(false);
+                  }}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
-                      <path d={iconClosePath} fill="#fff" fillRule="evenodd" />
+                      <path d={iconClosePath} fill={closeIconColor} fillRule="evenodd" />
                     </svg>
                   </button>
 
