@@ -57,10 +57,9 @@ const availableProds = [
 
 const addedItems = [
   {...availableProds[0],cantidad: 3},
+  {...availableProds[1],cantidad: 5},
   {...availableProds[2],cantidad: 5},
-  {...availableProds[2],cantidad: 5},
-  {...availableProds[2],cantidad: 5},
-  {...availableProds[2],cantidad: 5},
+  {...availableProds[3],cantidad: 5},
 ]
 
 

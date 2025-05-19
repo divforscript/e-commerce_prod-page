@@ -106,13 +106,13 @@ function DirectionButtons({
 }
 
 
-function Current({ id,pageWidth,itemX,func,funcParameter }){
+function Current({ id,itemX,setVarX,varX }){
   return(
     <button id={id}
       className={`h-auto w-full max-w-[420px]  overflow-hidden`}
       onClick={() => {
-        if(pageWidth < 769){ func(false); return; }
-        func(!funcParameter)
+        if(getPageWidth() < 769) return
+        setVarX(!varX)
       }}
     >
       <img
@@ -126,11 +126,10 @@ function Current({ id,pageWidth,itemX,func,funcParameter }){
 }
 
 
-function Thumbnail({ id,extraClasses,isShowed,thumbsArray,varX,setVarX }){
+function Thumbnail({ id,extraClasses,thumbsArray,varX,setVarX }){
     return(
       <div id={id}
-        className={` ${extraClasses} 
-        ${isShowed? "flex justify-between" : "hidden"}`}
+        className={`hidden ${extraClasses} `}
       >
         {thumbsArray.map((img, idx) => (
           <button
@@ -164,16 +163,7 @@ export default function Carousel() {
 
 
   window.onresize = () =>{
-    pageWidth = getPageWidth();
-
-
-    if(pageWidth < 769) {
-      setShowThumbs(false)
-      setIsModalOpen(false)
-      return
-    }
-
-    setShowThumbs(true)
+    setIsModalOpen(false)
   }
 
 
@@ -196,17 +186,16 @@ export default function Carousel() {
           goNext={goNext}
         />
 
+
         <Current
           id={"current-product-img"}
-          pageWidth={getPageWidth()}
           itemX={images[current]}
-          func={setIsModalOpen}
-          funcParameter={isModalOpen}
+          setVarX={setIsModalOpen}
+          varX={isModalOpen}
         />
          
         <Thumbnail
           id={"product-thumbnails"}
-          isShowed={showThumbs}
           extraClasses={"w-full gap-[2vw]"}
           thumbsArray={imagesThumb} 
           varX={current} 
@@ -215,10 +204,9 @@ export default function Carousel() {
 
         { isModalOpen && (
 
-
             <BackgroundInset 
               id={"carousel-inset"} 
-              extraClasses="min-h-[480px] z-50 items-center top-[-84px]"
+              extraClasses="hidden min-h-[480px] z-50 items-center top-[-84px]"
               
               childComponent={
                 
@@ -248,16 +236,18 @@ export default function Carousel() {
                     extraNextClasses="right-[calc(50vw-250px+20px)] top-[max(260px,calc(50vh-50px))]"
                   />
 
+                  {/* id,itemX,setVarX,varX */}
+
                   <Current
                     id={"modal-current-product-img"}
-                    pageWidth={getPageWidth()}
                     itemX={images[current]}
+                    setVarX={(x)=>{}}
+                    varX={0}
                   />
 
 
                   <Thumbnail
                     id={"modal-product-thumbnails"}
-                    isShowed={showThumbs}
                     extraClasses={"w-3/4 gap-[1.5vw] mt-5"}
                     thumbsArray={imagesThumb} 
                     varX={current} 

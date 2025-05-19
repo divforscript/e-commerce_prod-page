@@ -27,8 +27,13 @@
     border-radius: 20px;
   }
 
+  #product-thumbnails {
+    display: flex;
+  }
+
   
   #carousel-inset {
+    display: flex;
     left: calc(-1 * clamp(16px,calc(20vw - 162px),120px));
   }
 
@@ -36,6 +41,10 @@
   #modal-current-product-img {
     border-radius: 20px;
     max-width: 720px;
+  }
+
+  #modal-product-thumbnails {
+    display: flex;
   }
 
 }
